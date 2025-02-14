@@ -2,7 +2,7 @@ import random
 import json
 
 # Charger les interprétations des hexagrammes
-with open("source/hexagrammes_complet.json", "r", encoding="utf-8") as f:
+with open("hexagrammes_complet.json", "r", encoding="utf-8") as f:
     interpretations = json.load(f)
 
 def tirage_yi_king():
@@ -11,13 +11,17 @@ def tirage_yi_king():
     return hexagramme
 
 if __name__ == "__main__":
-    # Générer un hexagramme aléatoire
+    # Demander une question avant le tirage
+    question = input("🔮 Pose ta question avant le tirage : ")
+    print(f"\n🤔 Question posée : {question}\n")
+
+    # Générer un hexagramme
     hexagramme = tirage_yi_king()
 
     # Afficher l'hexagramme
-    print("✨ Votre hexagramme Yi King Quantique :\n")
-    for ligne in reversed(hexagramme):  # Affichage de bas en haut
-        print(ligne)
+    print("\n✨ Votre hexagramme Yi King Quantique :\n")
+    for ligne in reversed(hexagramme):  
+        print(f"   {ligne}   ")
 
     # Trouver l'interprétation
     interpretation = interpretations.get(hexagramme, {"nom": "Inconnu", "signification": "Pas d'interprétation disponible."})
